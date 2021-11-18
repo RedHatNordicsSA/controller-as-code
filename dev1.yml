@@ -42,6 +42,6 @@
       survey_enabled: yes
       survey_spec: "{{ lookup('file', 'playbooks/surveys/' + item + '.json') }}"
     vars_file:
-      - "{{ lookup('file', '~/checkout/' + project_name + '/' + item + '_vars.yml' }}
+      - "{{ lookup('file', '~/checkout/' + project_name + '/' + item + '_vars.yml' }}"
     loop: "{{ lookup('file', 'controller/job_templates.txt').splitlines() }}"
 
