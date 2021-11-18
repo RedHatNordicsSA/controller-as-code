@@ -1,0 +1,26 @@
+- name: Start all virtual machines in the cluster
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+
+  tasks:
+  - block:
+    - name: "Include role openshift_username_password_auth"
+      include_role:
+        name: openshift_username_password_auth
+      vars:
+        auth_action: login
+
+    - name: "Include role openshift_vm"
+      include_role:
+        name: openshift_vm
+      vars:
+        openshift_vm_action: start_all
+
+    always:
+    - name: "Include role openshift_username_password_auth"
+      include_role:
+        name: openshift_username_password_auth
+      vars:
+        auth_action: logout

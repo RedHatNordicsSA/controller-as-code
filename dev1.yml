@@ -1,0 +1,33 @@
+---
+# PRE-REQS:
+# - Ansible Galaxy/Automation Hub API Token Credential for Automation Hub
+# - OpenShift Credential
+- name: Create Job templates and dependencies for all palybooks in this repository in Controller
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    organization_name: "Default"
+    git_repo_url: "https://github.com/mglantz/controller-as-code"
+    project_name: "{{ git_repo_url.split('/')[-1] }}"
+
+  tasks:
+  - name: "Clone from git"
+    ansible.builtin.git:
+      repo: "{{ git_repo_url }}"
+      dest: "~/checkout/{{ project_name }}"
+  - name: "Create project"
+    awx.controller.project:
+      name: "{{ project_name   00"
+      organization: "{{ organization_name  }}"
+      state: present
+      scm_type: git
+      scm_url: "{{ git_repo_url }}"
+      scm_branch: main
+      scm_clean: yes
+      scm_update_on_launch: no 
+
+
+        
+
+
