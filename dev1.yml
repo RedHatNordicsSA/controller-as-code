@@ -38,7 +38,7 @@
         - "{{ credentials_name }}"
       state: "present"
       allow_simultaneous: yes
-      labels: "{{ labels }}"
+      #labels: "{{ labels }}"
       survey_enabled: yes
       survey_spec: "{{ lookup('file', 'playbooks/surveys/' + item + '.json') }}"
     vars_file:
