@@ -6,8 +6,9 @@
   hosts: localhost
   connection: local
   gather_facts: no
+  vars_files:
+    - ~/checkout/{{ project_name }}/controller/vars.yml
   vars:
-    organization_name: "Default"
     git_repo_url: "https://github.com/mglantz/controller-as-code"
     project_name: "{{ git_repo_url.split('/')[-1] }}"
 
