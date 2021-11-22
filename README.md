@@ -4,3 +4,4 @@ Two different approaches evaluated:
 
 * Simplified - Creating a sort of interface: create_job_templates.yml
 * Advanced - Using redhat_cop.controller_configuration: job_templates.yml
+- More information here: https://github.com/redhat-cop/tower_configuration
