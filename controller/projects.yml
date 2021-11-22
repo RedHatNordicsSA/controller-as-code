@@ -1,0 +1,12 @@
+---
+controller_projects:
+  - name: controller-as-code
+    scm_type: git
+    scm_url: https://github.com/mglantz/controller-as-code
+    scm_branch: main
+    scm_clean: true
+    description: Controller as code
+    organization: Default
+    wait: true
+    update: false
+...
