@@ -7,7 +7,7 @@
   include_vars: "~/checkout/{{ project_name }}/controller/{{ item }}_vars.yml"
 
 - name: "Add job templates"
-  awx.awx.job_template:
+  ansible.tower.job_template:
     name: "{{ item | replace('_',' ') }}"
     job_type: run
     organization: "{{ organization_name }}"
