@@ -16,7 +16,7 @@
       dest: "~/checkout/{{ project_name }}"
 
   - name: "Create project"
-    awx.awx.project:
+    ansible.tower.project:
       name: "{{ project_name }}"
       organization: "{{ organization_name  }}"
       state: present
