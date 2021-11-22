@@ -1,0 +1,24 @@
+---
+- name: "Debug"
+  debug:
+    msg: "Processing job_template: {{ item }}"
+
+- name: "Get variables for task from ~/checkout/{{ project_name }}/controller/{{ item }}_vars.yml"
+  include_vars: "~/checkout/{{ project_name }}/controller/{{ item }}_vars.yml"
+
+- name: "Add job templates"
+  awx.awx.job_template:
+    name: "{{ item | replace('_',' ') }}"
+    job_type: run
+    organization: "{{ organization_name }}"
+    inventory: "{{ inventory_name }}"
+    project: "{{ project_name }}"
+    playbook: "playbooks/{{ item }}.yml"
+    credentials:
+      - "{{ credentials_name }}"
+    state: "present"
+    allow_simultaneous: yes
+    #labels: "{{ labels }}"
+    survey_enabled: yes
+    survey_spec: "{{ lookup('file', 'playbooks/surveys/' + item + '.json') }}"
+
