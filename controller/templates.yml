@@ -39,7 +39,39 @@ controller_templates:
     project: controller-as-code
     playbook: playbooks/start_all_vms_in_namespace.yml
     verbosity: 0
- 
+    
+  - name: no_survey_test
+    description: no_survey_test
+    job_type: run
+    inventory: Demo Inventory
+    credentials: Demo Credential
+    project: controller-as-code
+    playbook: playbooks/start_all_vms_in_namespace.yml
+    verbosity: 0
+    
+  - name: survey_test
+    description: survey_test
+    job_type: run
+    inventory: Demo Inventory
+    credentials: Demo Credential
+    project: controller-as-code
+    playbook: playbooks/start_all_vms_in_namespace.yml
+    verbosity: 0
+    survey_spec:
+      name: ''
+      description: ''
+      spec:
+      - question_name: Target Host
+        question_description: target host is required for playbook to work, this host needs to exist in the inventory
+        required: true
+        type: text
+        variable: target_hosts
+        min: 0
+        max: 1024
+        default: infra-ansible-tower-testing.infra.sat.rdu2.redhat.com
+        choices: ''
+        new_question: true
+
 #
 # If you need to add Survey, Survey spec would look like given below:
 # survey_spec:
